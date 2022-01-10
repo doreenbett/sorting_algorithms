@@ -22,17 +22,23 @@ void swap_func(int *j, int *k)
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, len = size;
+	bool bubbling = false;
 
 	if (array == NULL || size < 2)
 		return;
 
-	for (i = 1; i < len - 1; i++)
+	while (bubbling == false)
 	{
-		if (array[i] > array[i + 1])
+		bubbling = true;
+		for (i = 1; i < len - 1; i++)
 		{
-			swap_func(array + 1, array + i + 1);
-			print_array(array, size);
+			if (array[i] > array[i + 1])
+			{
+				swap_func(array + 1, array + i + 1);
+				print_array(array, size);
+				bubbling = false;
+			}
 		}
+		len--;
 	}
-	len--;
 }
